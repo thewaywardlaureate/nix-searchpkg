@@ -13,12 +13,12 @@ The standard way of fetching packages in NixOs is a bit tedious and opening a br
 + Enough mental retardation to use NixOS
 
 ## Usage
-'''
+```
 $ git clone https://github.com/thewaywardlaureate/nix-searchpkg.git
 $ cd nix-searchpkg/
 $ chmod +777 nixsearchpkgs.sh
 $ ./nixsearchpkgs.sh
-'''
+```
 
 ## Notes
 
