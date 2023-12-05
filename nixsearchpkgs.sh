@@ -9,11 +9,20 @@ check_dependencies() {
         exit 1
     fi
 }
+
 check_dependencies
 
 clear
-
-check_dependencies
+check_browser() {
+    if [ $(ps aux | grep librewolf | wc -l) = 1 ]
+    then
+      browser=librewolf
+    else
+      browser=firefox
+    fi
+}
+check_browser
+clear 
 
 options="NixOS 23.05\nNixOS 23.11\nNixOS unstable"
 
@@ -24,14 +33,14 @@ input=$(rofi -dmenu -p "Enter the name of the package")
 case "$selected_option" in
     "NixOS 23.05")
         rofi -e "The channel you have selected is deprecated. Proceed with caution. Press 'Enter' to proceed"
-        librewolf 'https://search.nixos.org/packages?channel=23.05&from=0&size=50&sort=relevance&type=packages&query='"$input"
+        $browser 'https://search.nixos.org/packages?channel=23.05&from=0&size=50&sort=relevance&type=packages&query='"$input"
         ;;
     "NixOS 23.11")
-        librewolf 'https://search.nixos.org/packages?channel=23.11&from=0&size=50&sort=relevance&type=packages&query='"$input"
+        $browser 'https://search.nixos.org/packages?channel=23.11&from=0&size=50&sort=relevance&type=packages&query='"$input"
         ;;
     "NixOS unstable")
         rofi -e "The channel you have selected is unstable. Proceed with caution. Press 'Enter' to proceed" 
-        librewolf 'https://search.nixos.org/packages?channel=unstable&show=nchat&from=0&size=50&sort=relevance&type=packages&query='"$input"
+        $browser 'https://search.nixos.org/packages?channel=unstable&show=nchat&from=0&size=50&sort=relevance&type=packages&query='"$input"
         ;;
     *)
         echo "Invalid option selected."
