@@ -9,6 +9,7 @@ The standard way of fetching packages in NixOs is a bit tedious and opening a br
 
 + Rofi
 + Librewolf
++ Firefox 
 + Basic knowledge of NixOS
 + Enough mental retardation to use NixOS
 
